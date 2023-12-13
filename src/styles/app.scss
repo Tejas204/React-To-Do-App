@@ -2,3 +2,24 @@
     margin: 0;
     padding: 0;
 }
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    font-family: sans-serif;
+    padding: 10px;
+    background-color: #151621;
+    color: white;
+}
+
+
+.pageURI{
+    text-decoration: none;
+    color: white;
+    padding: 20px;
+}
+
+.pageURI:hover{
+    background-color: white;
+    color: #151621;
+}
