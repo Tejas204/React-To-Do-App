@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+
 }
 
 nav{
@@ -22,4 +23,61 @@ nav{
 .pageURI:hover{
     background-color: white;
     color: #151621;
+}
+
+.login{
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 5%;
+    width: 35%;
+    border-radius: 10px;
+    border: 2px solid black;
+    padding: 20px;
+    
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+form h2{
+    text-align: center;
+    color: #151621;
+    margin-bottom: 15px;
+}
+
+form h4{
+    text-align: center;
+    color: #151621;
+    margin-bottom: 15px;
+}
+
+form input{
+    margin-bottom: 2rem;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+form button{
+    margin-bottom: 2rem;
+    padding: 10px;
+    border-radius: 10px;
+    background-color:#151621;
+    color: white;
+    font-size: medium;   
+}
+
+.registerButton{
+    margin-bottom: 2rem;
+    padding: 10px;
+    border-radius: 10px;
+    background-color:#151621;
+    color: white;
+    text-decoration: none;
+    text-align: center;
 }
