@@ -11,7 +11,7 @@ const Login = () => {
           <input type='password' placeholder='Password'/>
           <button type='submit'>Login</button>
           <h4>Or</h4>
-          <Link className='registerButton' to={'/register'}>Register</Link>
+          <Link className='registerLoginButton' to={'/register'}>Register</Link>
         </form>
       </section>
     </div>
