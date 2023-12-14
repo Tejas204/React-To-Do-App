@@ -1,5 +1,8 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { server } from '../main';
+import toast from 'react-hot-toast';
 
 const Register = () => {
 
@@ -9,9 +12,29 @@ const Register = () => {
   const [password, setPassword] = useState("");
 
   // Handle Submit Action
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    console.log("Name: "+name+"\n"+"Email: "+email+"\n"+"Password: "+password);
+    console.log("Name: "+typeof name+"\n"+"Email: "+typeof email+"\n"+"Password: "+typeof password);
+    try {
+      const {data} = await axios.post(
+      `${server}/users/new`, 
+      {
+        name: name, 
+        email: email, 
+        password: password,
+      }, 
+      {
+        headers:{
+          "Content-Type": "application/json",
+        },
+        withCredentials: true
+      }
+    );
+      toast.success(data.message);
+    } catch (error) {
+      toast.error("Error");
+      console.log(error);
+    }
   }
 
   return (
@@ -21,18 +44,21 @@ const Register = () => {
           <h2>Register</h2>
           <input 
             value={name} 
+            required
             onChange={(e) => setName(e.target.value)} 
             type='text' 
             placeholder='Name'/>
 
           <input 
             value={email}
+            required
             onChange={(e) => setEmail(e.target.value)} 
             type='email' 
             placeholder='Email'/>
 
           <input 
             value={password} 
+            required
             onChange={(e) => setPassword(e.target.value)} 
             type='password' 
             placeholder='Password'/>
