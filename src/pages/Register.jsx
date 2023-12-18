@@ -30,8 +30,13 @@ const Register = () => {
         withCredentials: true
       }
     );
-      toast.success("Success");
-      toast.success(data.message);
+      
+    toast.success(data.message, {
+      style: {
+        borderRadius: '10px',
+        fontFamily: 'sans-serif',
+      },
+    });
       
     } catch (error) {
       toast.error("Error");
