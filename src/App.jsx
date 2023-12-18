@@ -5,12 +5,14 @@ import Header from './components/Header';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
 
   return (
   <Router>
     <Header></Header>
+    <Toaster/>
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/register' element={<Register/>}/>

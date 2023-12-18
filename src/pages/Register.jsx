@@ -14,7 +14,7 @@ const Register = () => {
   // Handle Submit Action
   const submitHandler = async (e) => {
     e.preventDefault();
-    
+
     try {
       const {data} = await axios.post(
       `${server}/users/new`, 
@@ -30,7 +30,9 @@ const Register = () => {
         withCredentials: true
       }
     );
+      toast.success("Success");
       toast.success(data.message);
+      
     } catch (error) {
       toast.error("Error");
       console.log(error);
