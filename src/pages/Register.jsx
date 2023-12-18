@@ -14,7 +14,7 @@ const Register = () => {
   // Handle Submit Action
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log("Name: "+typeof name+"\n"+"Email: "+typeof email+"\n"+"Password: "+typeof password);
+    
     try {
       const {data} = await axios.post(
       `${server}/users/new`, 
