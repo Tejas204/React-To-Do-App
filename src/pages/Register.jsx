@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { Context, server } from '../main';
 import toast from 'react-hot-toast';
 
@@ -50,6 +50,9 @@ const Register = () => {
       setIsAuthenticated(false);
     }
   }
+
+  // Navigate: Nagigate to home if user is authenticated
+  if(isAuthenticated) return <Navigate to={"/"}/>
 
   /*
   * Component: Register
