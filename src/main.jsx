@@ -17,6 +17,7 @@ export const Context = createContext({isAuthenticated: false});
 const AppWrapper = () => {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  console.log(isAuthenticated);
 
   return(
     <Context.Provider

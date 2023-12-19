@@ -1,7 +1,7 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { server } from '../main';
+import { Context, server } from '../main';
 import toast from 'react-hot-toast';
 
 const Register = () => {
@@ -10,8 +10,9 @@ const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const {isAuthenticated, setIsAuthenticated} = useContext(Context);
 
-  // Handle Submit Action
+  // Function: Handle Submit Action
   const submitHandler = async (e) => {
     e.preventDefault();
 
@@ -37,13 +38,23 @@ const Register = () => {
         fontFamily: 'sans-serif',
       },
     });
+
+    // Registration is success
+    setIsAuthenticated(true);
       
     } catch (error) {
       toast.error("Error");
       console.log(error);
+
+      // Registration is failure
+      setIsAuthenticated(false);
     }
   }
 
+  /*
+  * Component: Register
+  * Functionality: Contains the registration form
+  */
   return (
     <div className='login'>
       <section>

@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { Context } from '../main'
 
 const Header = () => {
+
+  const {isAuthenticated, setIsAuthenticated} = useContext(Context);
+
   return (
     <nav>
         <div>
@@ -10,7 +14,10 @@ const Header = () => {
         <article>
             <Link className='pageURI' to={'/'}>Home</Link>
             <Link className='pageURI' to={'/profile'}>Profile</Link>
-            <Link className='pageURI' to={'/login'}>Login</Link>
+            {
+              isAuthenticated ? <Link className='pageURI' to={'/logout'}>Logout</Link> : 
+              <Link className='pageURI' to={'/login'}>Login</Link>
+            }
         </article>
     </nav>
   )
