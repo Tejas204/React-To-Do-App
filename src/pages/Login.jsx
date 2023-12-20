@@ -11,6 +11,8 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // Navigate: Nagigate to home if user is authenticated
+  if(isAuthenticated) return <Navigate to={"/"}/>
 
   // Function: Handle Submit Action
   const submitHandler = async (e) => {
@@ -40,9 +42,6 @@ const Login = () => {
 
     // Registration is success
     setIsAuthenticated(true);
-
-    // Navigate: Nagigate to home if user is authenticated
-    if(isAuthenticated) return <Navigate to={"/"}/>
       
     } catch (error) {
       toast.error(error.response.data.message, {
