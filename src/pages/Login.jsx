@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Context } from '../main';
+import { Link, Navigate } from 'react-router-dom'
+import { Context, server } from '../main';
 import toast from 'react-hot-toast';
+import axios from 'axios';
 
 const Login = () => {
 
@@ -44,7 +45,12 @@ const Login = () => {
     if(isAuthenticated) return <Navigate to={"/"}/>
       
     } catch (error) {
-      toast.error("Error");
+      toast.error(error.response.data.message, {
+        style: {
+          borderRadius: '10px',
+          fontFamily: 'sans-serif',
+        },
+      });
       console.log(error);
 
       // Registration is failure
