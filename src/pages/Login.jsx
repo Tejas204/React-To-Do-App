@@ -39,6 +39,9 @@ const Login = () => {
 
     // Registration is success
     setIsAuthenticated(true);
+
+    // Navigate: Nagigate to home if user is authenticated
+    if(isAuthenticated) return <Navigate to={"/"}/>
       
     } catch (error) {
       toast.error("Error");
