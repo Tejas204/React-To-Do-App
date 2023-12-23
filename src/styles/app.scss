@@ -18,11 +18,12 @@ nav{
     text-decoration: none;
     color: white;
     padding: 20px;
+    font-size: medium;
 }
 
 .pageURI:hover{
-    background-color: white;
-    color: #151621;
+    border-bottom: 2px solid white;
+    padding-bottom: 3px;
 }
 
 .login{
@@ -70,6 +71,19 @@ form button{
     background-color:#151621;
     color: white;
     font-size: medium;   
+}
+
+.logoutButton{
+    color: white;
+    background-color: #151621;
+    font-size: medium;
+    margin-left: 20px;
+    border: none;
+}
+
+.logoutButton:hover{
+    border-bottom: 2px solid red;
+    padding-bottom: 3px;     
 }
 
 .registerLoginButton{

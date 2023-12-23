@@ -56,7 +56,7 @@ const Header = () => {
             <Link className='pageURI' to={'/'}>Home</Link>
             <Link className='pageURI' to={'/profile'}>Profile</Link>
             {
-              isAuthenticated ? <button className='pageURI' disabled={loading} onClick={logoutHandler} to={'/'}>Logout</button> : 
+              isAuthenticated ? <button className='logoutButton' disabled={loading} onClick={logoutHandler} to={'/'}>Logout</button> : 
               <Link className='pageURI' to={'/login'}>Login</Link>
             }
         </article>
