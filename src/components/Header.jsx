@@ -1,10 +1,47 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
-import { Context } from '../main'
+import React, { useContext, useState } from 'react'
+import { Link, Navigate } from 'react-router-dom'
+import { Context, server } from '../main';
+import toast from 'react-hot-toast';
+import axios from 'axios';
 
 const Header = () => {
 
   const {isAuthenticated, setIsAuthenticated} = useContext(Context);
+
+  // Function: Handle Submit Action
+  const logoutHandler = async () => {
+
+    try {
+      const {data} = await axios.get(
+      `${server}/users/logout`, 
+      {
+        withCredentials: true
+      }
+    );
+      
+    toast.success("Logged out successfully", {
+      style: {
+        borderRadius: '10px',
+        fontFamily: 'sans-serif',
+      },
+    });
+
+    // Registration is success
+    setIsAuthenticated(false);
+      
+    } catch (error) {
+      toast.error(error.response.data.message, {
+        style: {
+          borderRadius: '10px',
+          fontFamily: 'sans-serif',
+        },
+      });
+      console.log(error);
+
+      // Registration is failure
+      setIsAuthenticated(true);
+    }
+  }
 
   return (
     <nav>
@@ -15,7 +52,7 @@ const Header = () => {
             <Link className='pageURI' to={'/'}>Home</Link>
             <Link className='pageURI' to={'/profile'}>Profile</Link>
             {
-              isAuthenticated ? <Link className='pageURI' to={'/logout'}>Logout</Link> : 
+              isAuthenticated ? <Link className='pageURI' onClick={logoutHandler} to={'/'}>Logout</Link> : 
               <Link className='pageURI' to={'/login'}>Login</Link>
             }
         </article>
