@@ -10,11 +10,14 @@ const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const {isAuthenticated, setIsAuthenticated} = useContext(Context);
+  const {isAuthenticated, setIsAuthenticated, loading, setLoading} = useContext(Context);
 
   // Function: Handle Submit Action
   const submitHandler = async (e) => {
     e.preventDefault();
+
+    // Throttling
+    setLoading(true);
 
     try {
       const {data} = await axios.post(
@@ -41,6 +44,7 @@ const Register = () => {
 
     // Registration is success
     setIsAuthenticated(true);
+    setLoading(false);
       
     } catch (error) {
       toast.error("Error");
@@ -48,6 +52,7 @@ const Register = () => {
 
       // Registration is failure
       setIsAuthenticated(false);
+      setLoading(false);
     }
   }
 
@@ -84,7 +89,7 @@ const Register = () => {
             type='password' 
             placeholder='Password'/>
 
-          <button type='submit'>Submit</button>
+          <button disabled={loading} type='submit'>Submit</button>
           <h4>Or</h4>
           <Link className='registerLoginButton' to={'/login'}>Login</Link>
         </form>

@@ -7,7 +7,7 @@ import axios from 'axios';
 const Login = () => {
 
   // Hook: Set and access isAuthenticated
-  const {isAuthenticated, setIsAuthenticated} = useContext(Context);
+  const {isAuthenticated, setIsAuthenticated, loading, setLoading} = useContext(Context);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,6 +17,9 @@ const Login = () => {
   // Function: Handle Submit Action
   const submitHandler = async (e) => {
     e.preventDefault();
+
+    // Throttling
+    setLoading(true);
 
     try {
       const {data} = await axios.post(
@@ -42,6 +45,7 @@ const Login = () => {
 
     // Registration is success
     setIsAuthenticated(true);
+    setLoading(false);
       
     } catch (error) {
       toast.error(error.response.data.message, {
@@ -54,6 +58,7 @@ const Login = () => {
 
       // Registration is failure
       setIsAuthenticated(false);
+      setLoading(false);
     }
   }
 
@@ -76,7 +81,7 @@ const Login = () => {
             type='password' 
             placeholder='Password'/>
 
-          <button type='submit'>Login</button>
+          <button disabled={loading} type='submit'>Login</button>
           <h4>Or</h4>
           <Link className='registerLoginButton' to={'/register'}>Register</Link>
         </form>
