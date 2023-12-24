@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Header from './components/Header';
@@ -6,8 +6,26 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import { Toaster } from 'react-hot-toast';
+import axios from 'axios';
+import { Context, server } from './main';
 
 function App() {
+
+  // Context
+  const {setUser, setIsAuthenticated} = useContext(Context);
+
+  // Hook: Keeps user logged after page refresh
+  useEffect(() => {
+    axios.get(`${server}/users/me`, {
+      withCredentials: true,
+    }).then(res => {
+      setUser(res.data.user);
+      setIsAuthenticated(true);
+    }).catch((error) => {
+      setUser({});
+      setIsAuthenticated(false);
+    })
+  }, [])
 
   return (
   <Router>
