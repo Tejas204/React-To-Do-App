@@ -12,18 +12,23 @@ import { Context, server } from './main';
 function App() {
 
   // Context
-  const {setUser, setIsAuthenticated} = useContext(Context);
+  const {setUser, setIsAuthenticated, setLoading} = useContext(Context);
 
   // Hook: Keeps user logged after page refresh
   useEffect(() => {
+    // Set loading animation to true.
+    setLoading(true);
+
     axios.get(`${server}/users/me`, {
       withCredentials: true,
     }).then(res => {
       setUser(res.data.user);
       setIsAuthenticated(true);
+      setLoading(false);
     }).catch((error) => {
       setUser({});
       setIsAuthenticated(false);
+      setLoading(false);
     })
   }, [])
 
