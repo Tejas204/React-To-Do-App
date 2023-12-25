@@ -13,3 +13,11 @@ This repository contains the front-end of a to-do applicaton capable of performi
 ## Tech Stack and Libraries
 
 ### React JS
+
+### HTML
+
+### CSS
+
+### React-Router-DOM
+
+### Axios
