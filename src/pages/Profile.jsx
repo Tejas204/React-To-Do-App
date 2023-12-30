@@ -9,11 +9,12 @@ const Profile = () => {
   return (
 
     loading ? <Loader/> : ( 
-    <div>
-      <h1>{user?.name}</h1>
-      <h3>{user?.email}</h3>
-    </div>
-      
+      <div className='profileInformation'>
+        <div>
+          <h1 className='userName'>{user?.name}</h1>
+          <h3 className='userEmail'>{user?.email}</h3>
+        </div>
+      </div>
     )
     
   );

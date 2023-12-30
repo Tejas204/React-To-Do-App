@@ -100,3 +100,29 @@ form button{
     text-align: center;
     padding-top: 20%;
 }
+
+.profileInformation{
+    width: 500px;
+    height: 250px;
+    outline: solid 1px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 32%;
+    margin-top: 10%;
+    border-radius: 25px;
+    background-color: lightgray;
+}
+
+
+.userName{
+    padding: 10px;
+    font-family: sans-serif;
+    color: #151621;
+}
+
+.userEmail{
+    padding: 10px;
+    font-family: sans-serif;
+    color: #151621;
+}
