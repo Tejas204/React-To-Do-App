@@ -72,14 +72,16 @@ const Login = () => {
             required
             onChange={(e) => setEmail(e.target.value)} 
             type='email' 
-            placeholder='Email'/>
+            placeholder='Email'
+            size={50}/>
 
           <input 
             value={password} 
             required
             onChange={(e) => setPassword(e.target.value)} 
             type='password' 
-            placeholder='Password'/>
+            placeholder='Password'
+            size={50}/>
 
           <button disabled={loading} type='submit'>Login</button>
           <h4>Or</h4>
