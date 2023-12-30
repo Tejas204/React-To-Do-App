@@ -67,20 +67,22 @@ const Home = () => {
       <div className='login'>
       <section>
         <form onSubmit={submitHandler}>
-          <h2>Tasks</h2>
+          <h2>New Task</h2>
           <input 
             value={title}
             required
             onChange={(e) => setTitle(e.target.value)} 
             type='text' 
-            placeholder='Title'/>
+            placeholder='Title'
+            size={50}/>
 
           <input 
             value={description} 
             required
             onChange={(e) => setDescription(e.target.value)} 
             type='text' 
-            placeholder='Description'/>
+            placeholder='Description'
+            size={50}/>
 
           <button disabled={loading} type='submit'>Submit</button>
       
