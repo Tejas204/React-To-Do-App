@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 import { Context, server } from '../main';
 import toast from 'react-hot-toast';
@@ -10,6 +10,8 @@ const Home = () => {
   const {isAuthenticated, setIsAuthenticated, loading, setLoading} = useContext(Context);
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
+
+  // Hook: gets the existing task of the user
 
   // Function: Handle Submit Action
   const submitHandler = async (e) => {
@@ -92,7 +94,16 @@ const Home = () => {
 
       {/* List of existing tasks */}
       <section className='toDosContainer'>
-
+        {/* Contains task title and description */}
+        <div>
+          <h3>Sample task</h3>
+          <h4>Sample task description</h4>
+        </div>
+        {/* Contains checkbox and delete button */}
+        <div>
+          {/* Update button */}
+          {/* Delete button */}
+        </div>
       </section>
     </div>
   )
