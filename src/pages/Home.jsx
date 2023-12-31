@@ -7,11 +7,11 @@ import axios from 'axios';
 const Home = () => {
 
   // Hooks: Set title and Description of new task
-  const {isAuthenticated, setIsAuthenticated, loading, setLoading} = useContext(Context);
+  const {isAuthenticated, setIsAuthenticated} = useContext(Context);
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
-
-  // Hook: gets the existing task of the user
+  const [loading, setLoading] = useState(false);
+  const [task, setTasks] = useState([]);
 
   // Function: Handle Submit Action
   const submitHandler = async (e) => {
@@ -43,6 +43,8 @@ const Home = () => {
     });
 
     // Registration is success
+    setTitle("");
+    setDescription("");
     setIsAuthenticated(true);
     setLoading(false);
       
@@ -60,6 +62,26 @@ const Home = () => {
       setLoading(false);
     }
   }
+
+  // Hook: gets the existing task of the user
+  useEffect(() => {
+    axios.get(`${server}/tasks/getMyTasks`, {
+      withCredentials: true,
+    })
+    .then((res) => {
+      setTasks(res.data.tasks);
+      console.log(res.data.tasks);
+      console.log(task);
+    })
+    .catch((error) => {
+      toast.error(error.response.data.message, {
+        style: {
+          borderRadius: '10px',
+          fontFamily: 'sans-serif',
+        },
+      })
+    })
+  }, []);
 
   return (
     // Parent container
@@ -93,18 +115,25 @@ const Home = () => {
     </div>
 
       {/* List of existing tasks */}
-      <section className='toDosContainer'>
-        {/* Contains task title and description */}
-        <div>
-          <h3>Sample task</h3>
-          <h4>Sample task description</h4>
-        </div>
-        {/* Contains checkbox and delete button */}
-        <div>
-          {/* Update button */}
-          {/* Delete button */}
-        </div>
-      </section>
+            <section className='toDosContainer'>
+            {/* Contains task title and description */}
+            <div>
+              <h4>Sample task</h4>
+              <h5>Sample task description</h5>
+            </div>
+
+            {/* Contains checkbox and delete button */}
+            <form>
+              {/* Update button */}
+              <input type='checkbox'></input>
+            </form>
+              {/* Delete button */}
+            <form>
+              <button>Delete</button>
+            </form>
+
+          </section>
+      
     </div>
   )
 }
