@@ -11,10 +11,11 @@ const Home = () => {
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [loading, setLoading] = useState(false);
-  const [task, setTasks] = useState([]);
+  const [tasks, setTasks] = useState([]);
 
   // Function: Handle Submit Action
   const submitHandler = async (e) => {
+
     e.preventDefault();
 
     // Throttling
@@ -70,8 +71,6 @@ const Home = () => {
     })
     .then((res) => {
       setTasks(res.data.tasks);
-      console.log(res.data.tasks);
-      console.log(task);
     })
     .catch((error) => {
       toast.error(error.response.data.message, {
@@ -115,24 +114,37 @@ const Home = () => {
     </div>
 
       {/* List of existing tasks */}
-            <section className='toDosContainer'>
-            {/* Contains task title and description */}
-            <div>
-              <h4>Sample task</h4>
-              <h5>Sample task description</h5>
+      {
+        tasks.map(task => {
+          return(
+            <div className='toDosContainer' key={task._id}>
+              {/* Contains task title and description */}
+              <div>
+                <h4>{task.title}</h4>
+                <h5>{task.description}</h5>
+              </div>
+
+              {/* Contains checkbox and delete button */}
+              <form>
+                {/* Update button */}
+                <input type='checkbox'></input>
+              </form>
+                {/* Delete button */}
+              <form>
+                <button>Delete</button>
+              </form>
+
             </div>
+          )
+        })
+      }
+        
 
-            {/* Contains checkbox and delete button */}
-            <form>
-              {/* Update button */}
-              <input type='checkbox'></input>
-            </form>
-              {/* Delete button */}
-            <form>
-              <button>Delete</button>
-            </form>
-
-          </section>
+      <div>
+          {tasks.map(i => 
+            <p key={i._id}>{i.title}</p>
+          )}
+        </div>
       
     </div>
   )
