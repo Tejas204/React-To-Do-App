@@ -3,6 +3,7 @@ import { Link, Navigate } from 'react-router-dom'
 import { Context, server } from '../main';
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import ToDoItem from '../components/ToDoItem';
 
 const Home = () => {
 
@@ -114,37 +115,15 @@ const Home = () => {
     </div>
 
       {/* List of existing tasks */}
+      <div className='toDosContainer'>
       {
         tasks.map(task => {
           return(
-            <div className='toDosContainer' key={task._id}>
-              {/* Contains task title and description */}
-              <div>
-                <h4>{task.title}</h4>
-                <h5>{task.description}</h5>
-              </div>
-
-              {/* Contains checkbox and delete button */}
-              <form>
-                {/* Update button */}
-                <input type='checkbox'></input>
-              </form>
-                {/* Delete button */}
-              <form>
-                <button>Delete</button>
-              </form>
-
-            </div>
+              <ToDoItem title = {task.title} description = {task.description} isCompleted = {task.isCompleted}/>
           )
         })
       }
-        
-
-      <div>
-          {tasks.map(i => 
-            <p key={i._id}>{i.title}</p>
-          )}
-        </div>
+      </div>
       
     </div>
   )

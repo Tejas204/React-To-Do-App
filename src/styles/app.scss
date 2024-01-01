@@ -133,14 +133,22 @@ form button{
 .toDosContainer{
     font-family: sans-serif;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
     margin: auto;
     margin-top: 2%;
     width: 39%;
     border-radius: 10px;
-    border: 2px solid black;
     padding: 15px;
-    background-color: #e3e3e3;
+}
+
+.todo{
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-top: 2%;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e6e6e6;
 }
