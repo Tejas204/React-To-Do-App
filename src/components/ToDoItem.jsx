@@ -12,7 +12,10 @@ const ToDoItem = ({title, description, isCompleted}) => {
     {/* Contains checkbox and delete button */}
     <div>
         {/* Update button */}
-        <input type='checkbox'></input>
+        <label>
+            <input type='checkbox'></input>
+            <span></span>
+        </label>
         {/* Delete button */}
         <button>Delete</button>
     </div>
