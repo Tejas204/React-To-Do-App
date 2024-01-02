@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ToDoItem = ({title, description, isCompleted}) => {
+const ToDoItem = ({title, description, isCompleted, updateHandler, deleteHandler, id}) => {
   return (
     <div className='todo'>
         {/* Contains task title and description */}
@@ -13,11 +13,11 @@ const ToDoItem = ({title, description, isCompleted}) => {
     <div>
         {/* Update button */}
         <label>
-            <input type='checkbox'></input>
+            <input type='checkbox' checked={isCompleted} onChange={() => updateHandler(id)}></input>
             <span></span>
         </label>
         {/* Delete button */}
-        <button>Delete</button>
+        <button onClick={() => deleteHandler(id)}>Delete</button>
     </div>
   </div>
   )

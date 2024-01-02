@@ -65,6 +65,16 @@ const Home = () => {
     }
   }
 
+  // Function: handles update to task
+  const updateHandler = (id) => {
+    toast.success(id);
+  }
+
+  // Function: handles deletion of task
+  const deleteHandler = (id) => {
+    toast.error(id);
+  }
+
   // Hook: gets the existing task of the user
   useEffect(() => {
     axios.get(`${server}/tasks/getMyTasks`, {
@@ -119,7 +129,15 @@ const Home = () => {
       {
         tasks.map(task => {
           return(
-              <ToDoItem title = {task.title} description = {task.description} isCompleted = {task.isCompleted}/>
+              <ToDoItem 
+                title = {task.title} 
+                description = {task.description} 
+                isCompleted = {task.isCompleted}
+                updateHandler = {updateHandler}
+                deleteHandler = {deleteHandler}
+                id = {task._id}
+                key={task._id}
+                />
           )
         })
       }
