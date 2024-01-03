@@ -13,6 +13,7 @@ const Home = () => {
   const [description, setDescription] = useState();
   const [loading, setLoading] = useState(false);
   const [tasks, setTasks] = useState([]);
+  const [refresh, setRefresh] = useState(false);
 
   // Function: Handle Submit Action
   const submitHandler = async (e) => {
@@ -49,6 +50,7 @@ const Home = () => {
     setDescription("");
     setIsAuthenticated(true);
     setLoading(false);
+    setRefresh((prev) => !prev);
       
     } catch (error) {
       toast.error(error.response.data.message, {
@@ -77,6 +79,7 @@ const Home = () => {
           fontFamily: 'sans-serif',
         },
       });
+      setRefresh((prev) => !prev);
     } catch (error) {
       toast.error(error.response.data.message, {
         style: {
@@ -88,8 +91,26 @@ const Home = () => {
   }
 
   // Function: handles deletion of task
-  const deleteHandler = (id) => {
-    toast.error(id);
+  const deleteHandler = async (id) => {
+    try {
+      const {data} = await axios.delete(`${server}/tasks/${id}`,{
+        withCredentials: true,
+      });
+      toast.success(data.message, {
+        style: {
+          borderRadius: '10px',
+          fontFamily: 'sans-serif',
+        },
+      });
+      setRefresh((prev) => !prev);
+    } catch (error) {
+      toast.error(error.response.data.message, {
+        style: {
+          borderRadius: '10px',
+          fontFamily: 'sans-serif',
+        },
+      });
+    }
   }
 
   // Hook: gets the existing task of the user
@@ -108,7 +129,7 @@ const Home = () => {
         },
       })
     })
-  }, []);
+  }, [refresh]);
 
   return (
     // Parent container
