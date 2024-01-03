@@ -131,6 +131,9 @@ const Home = () => {
     })
   }, [refresh]);
 
+  // Navigate: Nagigate to home if user is authenticated
+  if(!isAuthenticated) return <Navigate to={"/login"}/>
+
   return (
     // Parent container
     <div className='container'>
