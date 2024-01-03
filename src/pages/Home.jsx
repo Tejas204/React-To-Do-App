@@ -66,8 +66,25 @@ const Home = () => {
   }
 
   // Function: handles update to task
-  const updateHandler = (id) => {
-    toast.success(id);
+  const updateHandler = async (id) => {
+    try {
+      const {data} = await axios.put(`${server}/tasks/${id}`, {},{
+        withCredentials: true,
+      });
+      toast.success(data.message, {
+        style: {
+          borderRadius: '10px',
+          fontFamily: 'sans-serif',
+        },
+      });
+    } catch (error) {
+      toast.error(error.response.data.message, {
+        style: {
+          borderRadius: '10px',
+          fontFamily: 'sans-serif',
+        },
+      });
+    }
   }
 
   // Function: handles deletion of task
