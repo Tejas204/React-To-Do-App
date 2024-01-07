@@ -10,19 +10,18 @@ This repository contains the front-end of a to-do applicaton capable of performi
 - Delete a task
 - Update a task
 
-## Tech Stack and Libraries
+## How to run
 
-### React JS
-React is a free and open-source front-end JavaScript library for building user interfaces based on components.
+1. Clone the repository
+2. `npm i` -- Running this command on the command line will install all the requisite dependencies given below
+3. `npm run start` -- Command to start the project
 
-### HTML
-Well, you cannot get anywhere without the basics.
+## Dependencies
 
-### CSS
-This web app uses css for styling.
-
-### React-Router-DOM
-Used for navigating between routes
-
-### Axios
-Promise based HTTP client for the browser and node.js
+| Dependency  | Command |
+| ------------- | ------------- |
+| Axios| `npm i axios`  |
+| React  | `npx create-react-app <app-name>`  |
+| React Hot Toast | `npm i react-hot-toast` |
+| React Router Dom| `npm i react-router-dom` |
+| SASS (Optional) | `npm install -g sass` |
