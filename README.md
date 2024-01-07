@@ -13,11 +13,16 @@ This repository contains the front-end of a to-do applicaton capable of performi
 ## Tech Stack and Libraries
 
 ### React JS
+React is a free and open-source front-end JavaScript library for building user interfaces based on components.
 
 ### HTML
+Well, you cannot get anywhere without the basics.
 
 ### CSS
+This web app uses css for styling.
 
 ### React-Router-DOM
+Used for navigating between routes
 
 ### Axios
+Promise based HTTP client for the browser and node.js
