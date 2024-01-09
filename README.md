@@ -2,7 +2,7 @@
 
 This repository contains the front-end of a to-do applicaton capable of performing CRUD operations. For the API's please see click here.
 
-### Features
+## Features
 - Login with cookie based authentication
 - Registration of new user
 - Create a task
