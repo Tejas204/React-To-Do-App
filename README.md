@@ -25,3 +25,11 @@ This repository contains the front-end of a to-do applicaton capable of performi
 | React Hot Toast | `npm i react-hot-toast` |
 | React Router Dom| `npm i react-router-dom` |
 | SASS (Optional) | `npm install -g sass` |
+
+## Deployment
+
+To deploy this app, I used the free pack available at 'Render.com'. It's simple to use and provides convenient features like easily editable deployment variables.
+
+## Future course of action
+
+1. Deploy the front-end of the application.
