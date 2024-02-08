@@ -1,6 +1,6 @@
 ## To-Do App
 
-This repository contains the front-end of a to-do applicaton capable of performing CRUD operations. For the API's please see click here.
+This repository contains the front-end of a to-do applicaton capable of performing CRUD operations.
 
 ## Features
 - Login with cookie based authentication
